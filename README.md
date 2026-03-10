@@ -28,11 +28,10 @@ This repository serves as an experimental pipeline, implementing and comparing f
 
 The project is modularized based on the specific detection algorithm employed:
 
-*   **`CNN/`**: Deep learning approach utilizing Convolutional Neural Networks for high-accuracy feature extraction and pixel-wise segmentation.
-*   **`DBSCAN/`**: Density-Based Spatial Clustering of Applications with Noise, used to cluster high-intensity pixel regions while filtering out noise and artifacts (like blood vessels).
-*   **`K-Mean Clustering/`**: An unsupervised machine learning approach that segments the retinal image into distinct color/intensity clusters to isolate the optic disc.
-*   **`Morphological + Thresholding/`**: Traditional computer vision pipeline applying adaptive thresholding, followed by morphological operations (erosion, dilation, opening/closing) to refine the optic disc boundaries.
-*   **`original/`**: The raw, unprocessed dataset of retinal fundus images used for training, testing, and validation.
+*   **`cnn/`**: Deep learning approach utilizing Convolutional Neural Networks for high-accuracy feature extraction and pixel-wise segmentation.
+*   **`db-scan//`**: Density-Based Spatial Clustering of Applications with Noise, used to cluster high-intensity pixel regions while filtering out noise and artifacts (like blood vessels).
+*   **`k-mean/`**: An unsupervised machine learning approach that segments the retinal image into distinct color/intensity clusters to isolate the optic disc.
+*   **`traditional/`**: Traditional computer vision pipeline applying adaptive thresholding, followed by morphological operations (erosion, dilation, opening/closing) to refine the optic disc boundaries.
 *   **`summary.docx`**: Complete project documentation, including mathematical background, detailed methodology, and analytical comparisons.
 
 ## 📊 Results & Evaluation
@@ -41,7 +40,7 @@ The performance of each methodology was evaluated using standard medical image s
 
 | Methodology | Mean Dice | Mean IoU | Pixel Accuracy | Key Observations |
 | :--- | :---: | :---: | :---: | :--- |
-| **CNN (VGG / U-Net)** | 92.92% | 87.97% | 99.80% | Exceptional score for a supervised deep learning method. The U-Net encoder-decoder architecture captures localized context precisely, ignoring the vast retinal background. |
-| **K-Means Clustering** | 85.41% | 77.98% | 99.34% | Exceptional unsupervised score. Forcing the final cluster into a mathematically perfect shape eliminated jagged boundaries. |
-| **DBSCAN Clustering** | 84.34% | 76.40% | 99.25% | Strong baseline for an unsupervised density-based algorithm. Successfully grouped dense core pixels while discarding scattered retinal noise and exudates. |
-| **Morphological + Thresholding**| 83.71% | 76.83% | 98.76% | Highly successful and robust for a "No-training" algorithm. The IoU score confirms masks are well-localized and consistent. |
+| **cnn** | 92.92% | 87.97% | 99.80% | Exceptional score for a supervised deep learning method. The U-Net encoder-decoder architecture captures localized context precisely, ignoring the vast retinal background. |
+| **k-mean** | 85.41% | 77.98% | 99.34% | Exceptional unsupervised score. Forcing the final cluster into a mathematically perfect shape eliminated jagged boundaries. |
+| **db-scan** | 84.34% | 76.40% | 99.25% | Strong baseline for an unsupervised density-based algorithm. Successfully grouped dense core pixels while discarding scattered retinal noise and exudates. |
+| **traditional**| 83.71% | 76.83% | 98.76% | Highly successful and robust for a "No-training" algorithm. The IoU score confirms masks are well-localized and consistent. |
